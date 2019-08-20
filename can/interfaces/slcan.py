@@ -9,6 +9,8 @@ Interface for slcan compatible interfaces (win32/linux).
 
 """
 
+from __future__ import absolute_import
+
 import time
 import logging
 
@@ -102,7 +104,7 @@ class slcanBus(BusABC):
             self.set_bitrate_reg(self, btr)
         self.open()
 
-        super().__init__(
+        super(slcanBus, self).__init__(
             channel, ttyBaudrate=115200, bitrate=None, rtscts=False, **kwargs
         )
 
